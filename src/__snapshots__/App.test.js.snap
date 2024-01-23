@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <h1
+      class="heading"
+    >
+      New York Times Articles
+    </h1>
+    <nav
+      class="navbar"
+    >
+      <a
+        aria-current="page"
+        class="active-link"
+        href="/"
+      >
+        Most Emailed
+      </a>
+      <a
+        class=""
+        href="/shared"
+      >
+        Most Shared
+      </a>
+      <a
+        class=""
+        href="/viewed"
+      >
+        Most Viewed
+      </a>
+    </nav>
+    <div
+      class="container"
+    >
+      <h2
+        class="heading"
+      >
+        emailed Articles
+      </h2>
+      <div
+        class="card-container"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Articles Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <h2
+      class="heading"
+    >
+      emailed Articles
+    </h2>
+    <div
+      class="card-container"
+    />
+  </div>
+</DocumentFragment>
+`;
