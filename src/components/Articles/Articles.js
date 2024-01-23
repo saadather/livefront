@@ -2,14 +2,37 @@ import React, { useState, useEffect } from 'react';
 
 function Articles({ category }) {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch articles based on the category from the API
-    fetch(`https://api.nytimes.com/svc/mostpopular/v2/${category}/7.json?api-key=1eHFZtK4jQRIkZeIoIw4ki2agUueFSV8`)
-      .then(response => response.json())
-      .then(data => setArticles(data.results))
-      .catch(error => console.error('Error fetching articles:', error));
+    const fetchArticles = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`https://api.nytimes.com/svc/mostpopular/v2/${category}/7.json?api-key=1eHFZtK4jQRIkZeIoIw4ki2agUueFSV8`);
+        const data = await response.json();
+        setArticles(data.results);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
   }, [category]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (articles.length === 0) {
+    return <div>No articles found.</div>;
+  }
   
   return (
     <div className="container">

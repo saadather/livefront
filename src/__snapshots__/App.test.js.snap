@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Component matches snapshot 1`] = `
-<DocumentFragment>
+<div>
   <div
     class="container"
   >
@@ -33,35 +33,17 @@ exports[`App Component matches snapshot 1`] = `
         Most Viewed
       </a>
     </nav>
-    <div
-      class="container"
-    >
-      <h2
-        class="heading"
-      >
-        emailed Articles
-      </h2>
-      <div
-        class="card-container"
-      />
+    <div>
+      Loading...
     </div>
   </div>
-</DocumentFragment>
+</div>
 `;
 
 exports[`Articles Component matches snapshot 1`] = `
-<DocumentFragment>
-  <div
-    class="container"
-  >
-    <h2
-      class="heading"
-    >
-      emailed Articles
-    </h2>
-    <div
-      class="card-container"
-    />
+<div>
+  <div>
+    Loading...
   </div>
-</DocumentFragment>
+</div>
 `;
