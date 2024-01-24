@@ -34,11 +34,11 @@ const BookReview = () => {
 
   return (
     <div>
-      <h2>Book Reviews</h2>
+      <h2>Book Reviews by author name</h2>
       <div>
         <input
           type="text"
-          placeholder="Enter book title"
+          placeholder="Enter author name"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -57,6 +57,9 @@ const BookReview = () => {
             ))}
           </ul>
         </div>
+      )}
+      {!loading && !error && reviews.length === 0 && (
+        <h3>No Results</h3>
       )}
     </div>
   );

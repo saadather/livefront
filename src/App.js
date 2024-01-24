@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <nav className="left-nav">
+        <nav className="nav">
           <NavLink to="/most-popular" className={({ isActive }) =>
               isActive ? 'active-link' : ''
             }>

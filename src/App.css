@@ -1,8 +1,6 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-  display: flex;
-  height: 100vh;
 }
 
 .heading {
@@ -79,13 +77,15 @@
   color: #007bff;
 }
 
-.left-nav {
-  width: 200px;
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   background-color: #f0f0f0;
 }
 
-.left-nav a {
+.nav a {
   display: block;
   padding: 10px;
   margin-bottom: 10px;
@@ -94,7 +94,7 @@
   border-radius: 5px;
 }
 
-.left-nav a:hover {
+.nav a:hover {
   background-color: #ddd;
 }
 
@@ -112,7 +112,7 @@
     flex-direction: column;
   }
 
-  .left-nav {
+  .nav {
     max-width: 100%;
     width: auto;
   }
