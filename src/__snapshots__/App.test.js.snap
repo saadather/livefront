@@ -5,37 +5,25 @@ exports[`App Component matches snapshot 1`] = `
   <div
     class="container"
   >
-    <h1
-      class="heading"
-    >
-      New York Times Articles
-    </h1>
     <nav
-      class="navbar"
+      class="left-nav"
     >
       <a
-        aria-current="page"
-        class="active-link"
-        href="/"
+        class=""
+        href="/most-popular"
       >
-        Most Emailed
+        Most Popular
       </a>
       <a
         class=""
-        href="/shared"
+        href="/book-review"
       >
-        Most Shared
-      </a>
-      <a
-        class=""
-        href="/viewed"
-      >
-        Most Viewed
+        Book Review
       </a>
     </nav>
-    <div>
-      Loading...
-    </div>
+    <div
+      class="main-content"
+    />
   </div>
 </div>
 `;

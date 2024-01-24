@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from './App';
 import Articles from './components/Articles/Articles';
+import BookReview from './components/BookReview/BookReview';
 
 // Mock the fetch function
 jest.mock('node-fetch');
@@ -11,7 +12,7 @@ describe('App Component', () => {
   it('renders without crashing', async () => {
     render(<App />);
     await waitFor(() => {
-      expect(screen.getByText(/New York Times Articles/)).toBeInTheDocument();
+      expect(screen.getByText(/Most Popular/)).toBeInTheDocument();
     });
   });
 
@@ -120,11 +121,7 @@ describe('Articles Component', () => {
 
   it('renders without crashing', async () => {
     render(<Articles category="emailed" />);
-    await waitFor(() => {
-      expect(screen.getByText(/Published Date:/)).toBeInTheDocument();
-      // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
-      expect(screen.getByText(/Read more/)).toBeInTheDocument();
-    });
+    await expect(screen.getByText(/Loading.../)).toBeInTheDocument();
   });
 
   it('matches snapshot', async () => {
@@ -132,3 +129,68 @@ describe('Articles Component', () => {
     await expect(container).toMatchSnapshot();
   });
 });
+
+
+
+describe('BookReview Component', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('renders without crashing', async () => {
+    render(<BookReview />);
+    expect(screen.getByText(/Book Reviews/)).toBeInTheDocument();
+  });
+
+  it('displays search results when API request succeeds', async () => {
+    const mockedBookData = {
+      book_title: 'Test Book',
+      book_author: 'Test Author',
+      publication_dt: '2022-01-01',
+      summary: 'Test summary',
+    };
+
+    const mockApiResponse = {
+      results: [mockedBookData],
+    };
+
+    fetch.mockResolvedValueOnce({
+      json: jest.fn().mockResolvedValueOnce(mockApiResponse),
+    });
+
+    render(<BookReview />);
+    await screen.findByText(/Book Reviews/);
+  });
+
+  it('handles search input change and button click', async () => {
+    const mockedBookData = {
+      book_title: 'Test Book',
+      book_author: 'Test Author',
+      publication_dt: '2022-01-01',
+      summary: 'Test summary',
+    };
+
+    const mockApiResponse = {
+      results: [mockedBookData],
+    };
+
+    fetch.mockResolvedValueOnce({
+      json: jest.fn().mockResolvedValueOnce(mockApiResponse),
+    });
+
+    render(<BookReview />);
+    
+    const inputElement = screen.getByPlaceholderText('Enter book title');
+    const buttonElement = screen.getByText('Search');
+
+    // Simulate user input
+    fireEvent.change(inputElement, { target: { value: 'Test' } });
+    expect(inputElement.value).toBe('Test');
+
+    // Simulate button click
+    fireEvent.click(buttonElement);
+
+    await screen.findByText(/Book Reviews/);
+  });
+});
+

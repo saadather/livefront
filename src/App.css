@@ -1,6 +1,8 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
+  display: flex;
+  height: 100vh;
 }
 
 .heading {
@@ -75,4 +77,69 @@
 
 .active-link {
   color: #007bff;
+}
+
+.left-nav {
+  width: 200px;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.left-nav a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+}
+
+.left-nav a:hover {
+  background-color: #ddd;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.main-content .container {
+  flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-nav {
+    max-width: 100%;
+    width: auto;
+  }
+}
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+}
+
+.book-card h3 {
+  margin: 0;
+}
+
+.book-card h4 {
+  color: #666;
+  margin-top: 5px;
+}
+
+.book-card p {
+  margin: 10px 0 0;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Articles({ category }) {
   const [articles, setArticles] = useState([]);
@@ -36,6 +37,24 @@ function Articles({ category }) {
   
   return (
     <div className="container">
+    <h1 className="heading">New York Times Articles</h1>
+    <nav className="navbar">
+      <NavLink to="/most-popular/emailed" className={({ isActive }) =>
+        isActive ? 'active-link' : ''
+      }>
+        Most Emailed
+      </NavLink>
+      <NavLink to="/most-popular/shared" className={({ isActive }) =>
+        isActive ? 'active-link' : ''
+      }>
+        Most Shared
+      </NavLink>
+      <NavLink to="/most-popular/viewed" className={({ isActive }) =>
+        isActive ? 'active-link' : ''
+      }>
+        Most Viewed
+      </NavLink>
+    </nav>
       <h2 className="heading">{category} Articles</h2>
       <div className="card-container">
         {articles.map(article => (

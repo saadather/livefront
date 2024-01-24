@@ -2,34 +2,33 @@ import React from 'react';
 import { BrowserRouter as Router, Route, NavLink, Routes } from 'react-router-dom';
 import './App.css';
 import Articles from './components/Articles/Articles';
+import BookReview from './components/BookReview/BookReview';
 
 function App() {
   return (
     <Router>
       <div className="container">
-        <h1 className="heading">New York Times Articles</h1>
-        <nav className="navbar">
-          <NavLink to="/" className={({ isActive }) =>
-            isActive ? 'active-link' : ''
-          }>
-            Most Emailed
+        <nav className="left-nav">
+          <NavLink to="/most-popular" className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }>
+            Most Popular
           </NavLink>
-          <NavLink to="/shared" className={({ isActive }) =>
-            isActive ? 'active-link' : ''
-          }>
-            Most Shared
-          </NavLink>
-          <NavLink to="/viewed" className={({ isActive }) =>
-            isActive ? 'active-link' : ''
-          }>
-            Most Viewed
+          <NavLink to="/book-review" className={({ isActive }) =>
+              isActive ? 'active-link' : ''
+            }>
+            Book Review
           </NavLink>
         </nav>
-        <Routes>
-          <Route path="/" element={<Articles category="emailed" />} />
-          <Route path="/shared" element={<Articles category="shared" />} />
-          <Route path="/viewed" element={<Articles category="viewed" />} />
-        </Routes>
+        <div className="main-content">
+          <Routes>
+            <Route path="/most-popular" element={<Articles category="emailed" />} />
+            <Route path="/book-review" element={<BookReview />} />
+            <Route path="most-popular/emailed" element={<Articles category="emailed" />} />
+            <Route path="most-popular/shared" element={<Articles category="shared" />} />
+            <Route path="most-popular/viewed" element={<Articles category="viewed" />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
